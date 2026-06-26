@@ -1,7 +1,6 @@
 import { useState } from "react";
 import EventPanel from "../components/EventPanel";
 import FadeInSection from "../components/FadeInSection";
-import flowerSvg from "/flower.svg";
 
 const mockEvents = [
   // {
@@ -42,7 +41,7 @@ const EventsPage = () => {
   const events = isEvents ? mockEvents.slice(0, 3) : [];
 
   return (
-    <div className="text-center pt-10">
+    <div className="text-center">
       <section className="px-6 lg:px-12 pt-16 pb-4">
         <FadeInSection>
           <h1>Upcoming Events</h1>

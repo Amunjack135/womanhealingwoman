@@ -1,10 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import FadeInSection from "../components/FadeInSection";
-import ImagePlaceholder from "../components/ImagePlaceholder";
-import womenhugging from '../assets/womenhugging.png';
+import hands from '../assets/hands.JPG';
 import image from '../assets/image2.JPG';
-import { collection, addDoc } from "firebase/firestore";
-import { db } from "/firebase";
 import { useState } from "react";
 
 
@@ -37,46 +34,43 @@ const MapPinIcon = () => (
 
 const HomePage = () => {
   const navigate = useNavigate();
-  const [formData, setFormData] = useState({
+  const [result, setResult] = useState("");
 
-    firstName: "",
-    lastName: "",
-    email: "",
-    phone: "",
-    position: "",
-    experience: "",
-    startMonth: "",
-    startDay: "",
-    startYear: "",
-  });
+  const scrollToSection = () => {
+    const section = document.getElementById("form");
+    section?.scrollIntoView({ behavior: "smooth" });
+  };
 
 
   async function handleFormSubmit(event) {
 
     event.preventDefault();
 
+    setResult("Sending....");
+
     const formData = new FormData(event.target);
 
-    const formPayload = Object.fromEntries(formData.entries());
+    formData.append("access_key", import.meta.env.VITE_WEB3_FORM);
 
-    console.log("Form Data Object:", formPayload); 
+    console.log("Form Data Object:", formData); 
 
-    try {
-        const docRef = await addDoc(collection(db, "volunteer_mentors"), {
-          formData: formPayload,
-        });
-        console.log("Document written with ID: ", docRef.id);
+    const response = await fetch("https://api.web3forms.com/submit", {
+      method: "POST",
+      body: formData
+    });
 
-        event.target.reset()
-
-      } catch (e) {
-        console.error("Error adding document: ", e);
-      }
+    const data = await response.json();
+    if (data.success) {
+      setResult("Form Submitted Successfully");
+      event.target.reset();
+    } else {
+      setResult("Error");
+    }
 
   }
 
   return (
-    <div className="home-container overflow-hidden pt-10">
+    <div className="home-container overflow-hidden">
 
       {/* Hero */}
       <section className="relative grid grid-cols-1 lg:grid-cols-2 gap-12 items-center px-6 lg:px-12 py-20">
@@ -90,14 +84,14 @@ const HomePage = () => {
           <br />
           <div className="flex flex-wrap gap-4">
             <button
-              onClick={() => { navigate("/join"); }}
+              onClick={() => window.open('https://www.instagram.com/womanhealingwoman/', '_blank', 'noreferrer')}
               className="rounded-full bg-[#652818] text-white px-8 py-4 text-lg font-medium hover:opacity-90 hover:scale-105 transition"
             >
               Join the Circle
             </button>
 
             <button
-              onClick={() => { navigate("/"); }}
+              onClick={scrollToSection}
               className="rounded-full border-2 border-[#652818] text-[#652818] px-8 py-4 text-lg font-medium hover:bg-[#652818]/5 hover:scale-105 transition"
             >
               Support the Movement
@@ -107,7 +101,7 @@ const HomePage = () => {
 
         <FadeInSection delay={150}>
           <img
-            src={womenhugging}
+            src={hands}
             alt="Women gathered in a healing circle"
             className="rounded-3xl w-full h-full object-cover aspect-[4/3]"
         />
@@ -128,6 +122,14 @@ const HomePage = () => {
             Our foundation focuses on restoring the woman first, because when a woman heals, everything around her begins to heal. The children grow stronger. The family becomes more stable. The community becomes more connected. And the tribe begins to rise.
           </p>
         </FadeInSection>
+
+        {/* <FadeInSection className="lg:col-span-2 flex items-center justify-center w-full">
+          <img
+            src={image}
+            alt="Women gathered"
+            className="rounded-3xl mx-auto w-full max-w-5xl h-auto object-cover"
+          />
+        </FadeInSection> */}
       </section>
 
       {/* Culture, Wisdom & Sacred Mentorship */}
@@ -149,13 +151,16 @@ const HomePage = () => {
       </section>
 
       {/* Volunteer/Mentor Application + Visit info — white background */}
-      <section className="bg-white grid grid-cols-1 lg:grid-cols-2 gap-16 px-6 lg:px-12 py-20 text-left">
+      <section id="form" className="bg-white grid grid-cols-1 lg:grid-cols-2 gap-16 px-6 lg:px-12 py-20 text-left">
 
         <FadeInSection className="bg-[#FEF7F6] p-8 rounded-3xl shadow-sm">
           <h2 className="text-2xl font-semibold mb-2">Volunteer/Mentor Application Form</h2>
           <p className="mb-8">Please fill out all required information below.</p>
 
-          <form action="" className="flex flex-col gap-6" onSubmit={handleFormSubmit} method="post">
+          <form action="" className="flex flex-col gap-6"  onSubmit={handleFormSubmit} method="post">
+
+            {/* <input type="hidden" name="access_key" value="853455fe-f81f-437d-b468-f1f182311adc"/> */}
+
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
               <div className="flex flex-col gap-2">
                 <label htmlFor="firstName">First name *</label>

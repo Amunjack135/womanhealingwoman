@@ -91,7 +91,7 @@ const guidingPrinciples = [
 
 const AboutPage = () => {
   return (
-    <div className="text-left overflow-hidden pt-10">
+    <div className="text-left overflow-hidden">
       {/* Hero with decorative blurred background shape */}
       <section className="relative px-6 lg:px-12 py-20 text-center">
         <div className="absolute -top-20 -right-20 w-72 h-72 rounded-full /10 blur-3xl pointer-events-none" />
