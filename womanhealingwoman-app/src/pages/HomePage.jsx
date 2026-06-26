@@ -52,7 +52,6 @@ const HomePage = () => {
 
     formData.append("access_key", import.meta.env.VITE_WEB3_FORM);
 
-    console.log("Form Data Object:", formData); 
 
     const response = await fetch("https://api.web3forms.com/submit", {
       method: "POST",
