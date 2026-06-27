@@ -155,7 +155,7 @@ const AboutPage = () => {
           <div>
             <h2>Meet Our Founder</h2>
             <p className="text-lg mt-4">
-              Woman Healing Woman Foundation was established by Tangerla Jackson to serve as a
+              Woman Healing Woman Foundation was established by Tangerla Jackson-Blakely to serve as a
               sanctuary of renewal, empowerment, and transformation for all who seek alignment
               with the Divine Source and the unfolding guidance of fate. Under her leadership,
               the Foundation acknowledges the Divine Source as the eternal creative power that

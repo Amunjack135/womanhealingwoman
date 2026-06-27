@@ -28,6 +28,7 @@ const Footer = () => {
       <div className="flex flex-wrap items-center justify-between gap-2 text-sm">
         <p>© 2026 Woman Healing Woman Foundation. All rights reserved.</p>
         <p>Empowering Women, Healing Communities</p>
+        <p className='leading-normal text-xs'>Woman Healing Woman Foundation is a registered 501(c)(3) tax-exempt nonprofit organization. Donations are tax-deductible to the extent permitted by law.</p>
       </div>
     </footer>
   );
