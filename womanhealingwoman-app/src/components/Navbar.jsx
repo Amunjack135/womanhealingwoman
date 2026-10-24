@@ -73,7 +73,7 @@ const Navbar = () => {
           {/* Desktop donate */}
           <div className="hidden md:flex items-center gap-4">
             <style>{`.pp-PTTJPNZ28JUN8{text-align:center;border:none;border-radius:1.5rem;min-width:9rem;padding:0 1.5rem;height:2.5rem;font-weight:bold;background-color:#652818;color:#ffffff;font-family:"Helvetica Neue",Arial,sans-serif;font-size:0.95rem;cursor:pointer;transition:opacity 0.2s;} .pp-PTTJPNZ28JUN8:hover{opacity:0.88;}`}</style>
-            <form action="https://www.paypal.com/ncp/payment/PTTJPNZ28JUN8" method="post" target="_blank">
+            <form action="https://enroll.zellepay.com/qr-codes?data=eyJuYW1lIjoiVEFOR0VSTEEiLCJ0b2tlbiI6IndvbWFuaGVhbGluZ3dvbWFuQGdtYWlsLmNvbSJ9" method="post" target="_blank">
               <input className="pp-PTTJPNZ28JUN8" type="submit" value="Donate" />
             </form>
           </div>
@@ -122,7 +122,7 @@ const Navbar = () => {
 
           {/* Donate in mobile menu */}
           <div className="mt-4 pt-4 border-t border-[#652818]/10">
-            <form action="https://www.paypal.com/ncp/payment/PTTJPNZ28JUN8" method="post" target="_blank">
+            <form action="https://enroll.zellepay.com/qr-codes?data=eyJuYW1lIjoiVEFOR0VSTEEiLCJ0b2tlbiI6IndvbWFuaGVhbGluZ3dvbWFuQGdtYWlsLmNvbSJ9" method="post" target="_blank">
               <input
                 className="pp-PTTJPNZ28JUN8 w-full"
                 type="submit"
